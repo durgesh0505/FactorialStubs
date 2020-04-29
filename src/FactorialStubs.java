@@ -67,7 +67,7 @@ public class FactorialStubs{
                 connect = true;
             }
         } catch (NullPointerException e){
-            //System.out.println("No data in file");
+            System.out.println("No data in file");
         }
         return connect;
     }
@@ -107,5 +107,110 @@ public class FactorialStubs{
 
         return result;
     }
+
+
+    //Syntax Coverage
+    //AOR:  fact = fact + i;
+    public static int FactorialMutant1(int number) {
+        int fact = 1;
+        if (number > 1){
+            for (int i = 2; i <= number; i++) {
+                fact = fact + i;
+            }
+        } else if( number < 0){
+            for (int i = 2; i <= Math.abs(number); i++) {
+                fact = fact * i;
+            }
+            fact = -fact;
+        }
+
+        return fact;
+    }
+
+    //ROR:  else if( number <= 0){
+    public static int FactorialMutant2(int number) {
+        int fact = 1;
+        if (number > 1){
+            for (int i = 2; i <= number; i++) {
+                fact = fact * i;
+            }
+        } else if( number <= 0){
+            for (int i = 2; i <= Math.abs(number); i++) {
+                fact = fact * i;
+            }
+            fact = -fact;
+        }
+
+        return fact;
+    }
+
+    //UOI:  fact = fact * -i;
+    public static int FactorialMutant3(int number) {
+        int fact = 1;
+        if (number > 1){
+            for (int i = 2; i <= number; i++) {
+                fact = fact * -i;
+            }
+        } else if( number <= 0){
+            for (int i = 2; i <= Math.abs(number); i++) {
+                fact = fact * i;
+            }
+            fact = -fact;
+        }
+
+        return fact;
+    }
+
+    //SVR:  fact = number * i;
+    public static int FactorialMutant4(int number) {
+        int fact = 1;
+        if (number > 1){
+            for (int i = 2; i <= number; i++) {
+                fact = number * i;
+            }
+        } else if( number < 0){
+            for (int i = 2; i <= Math.abs(number); i++) {
+                fact = fact * i;
+            }
+            fact = -fact;
+        }
+
+        return fact;
+    }
+
+    //ROR:  if (number < 1){
+    public static int FactorialMutant5(int number) {
+        int fact = 1;
+        if (number < 1){
+            for (int i = 2; i <= number; i++) {
+                fact = fact * i;
+            }
+        } else if( number < 0){
+            for (int i = 2; i <= Math.abs(number); i++) {
+                fact = fact * i;
+            }
+            fact = -fact;
+        }
+
+        return fact;
+    }
+
+    //ROR:  for (int i = 2; i < number; i++) {
+    public static int FactorialMutant6(int number) {
+        int fact = 1;
+        if (number > 1){
+            for (int i = 2; i < number; i++) {
+                fact = fact * i;
+            }
+        } else if( number < 0){
+            for (int i = 2; i <= Math.abs(number); i++) {
+                fact = fact * i;
+            }
+            fact = -fact;
+        }
+
+        return fact;
+    }
+
 
 }
